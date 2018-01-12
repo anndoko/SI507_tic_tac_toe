@@ -1,8 +1,7 @@
 # function: print current board
-# params: the draw_board function does not take any input as its parameter
+# params: the draw_board function takes a list as its parameter
 # return: the draw_board function does not return anything; it prints the current board for the players
-def draw_board():
-    print("CURRENT BOARD:")
+def draw_board(board_lst):
     print("----------")
     print(board_lst[0], "|", board_lst[1], "|", board_lst[2])
     print("----------")
@@ -33,9 +32,9 @@ def if_valid_move(p_input):
         print("That's not a valid move. Please pick a cell again:\n")
 
 # function: check if the player wins the game
-# params: the if_win function does not take any input as its parameter
+# params: the if_win function takes a list as its parameter
 # return: the if_win function returns True if any of the win combination is found
-def if_win():
+def if_win(board_lst):
     # win combinations
     win_combinations = [(0, 1, 2), (3, 4, 5), (6, 7, 8), (0, 3, 6), (1, 4, 7), (2, 5, 8), (0, 4, 8), (2, 4, 6)]
     # iterate through the list of win combinations
@@ -45,9 +44,9 @@ def if_win():
             return True
 
 # function: check if it is a tie
-# params: the if_draw function does not take any input as its parameter
+# params: the if_draw function takes a list as its parameter
 # return: the if_draw returns False if it finds an available cell; otherwise, it returns True
-def if_draw():
+def if_draw(board_lst):
     for cell in board_lst:
         if type(cell) == int:
             return False
@@ -63,18 +62,22 @@ p1_symbol = "O"
 p2_symbol = "X"
 
 for cell in board_lst:
+    draw_board(board_lst)  # print the current board
     p1_input = player_move() # p1 makes a move
     while not if_valid_move(p1_input):
         p1_input = player_move()
     board_lst[p1_input] = p1_symbol
-    draw_board() # print the current board
-    if if_win() or if_draw(): # check if p1 wins the game or if it's a tie
+    draw_board(board_lst) # print the current board
+    if if_win(board_lst) or if_draw(board_lst): # check if p1 wins the game or if it's a tie
         break # if the returned value is True, break the loop
 
+    print("---------------------------------------")
+
+    draw_board(board_lst)  # print the current board
     p2_input = player_move() # p2 makes a move
     while not if_valid_move(p2_input):
         p2_input = player_move()
     board_lst[p2_input] = p2_symbol
-    draw_board()  # print the current board
-    if if_win() or if_draw(): # check if p2 wins the game or if it's a tie
+    draw_board(board_lst)  # print the current board
+    if if_win(board_lst) or if_draw(board_lst): # check if p2 wins the game or if it's a tie
         break # if the returned value is True, break the loop
