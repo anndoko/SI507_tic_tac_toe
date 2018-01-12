@@ -54,7 +54,6 @@ def if_draw():
     print("It is a tie.")
     return True
 
-
 # ---------------------------------------
 # create a list from 0 to 8 for the board
 board_lst = list(range(0,9))
@@ -64,23 +63,18 @@ p1_symbol = "O"
 p2_symbol = "X"
 
 for cell in board_lst:
-    # p1 makes a move
-    p1_input = player_move()
+    p1_input = player_move() # p1 makes a move
     while not if_valid_move(p1_input):
         p1_input = player_move()
     board_lst[p1_input] = p1_symbol
-    draw_board()
-    # after p1 made the move, check if p1 wins the game
-    # if the returned value is True, break the loop
-    if if_win() or if_draw():
-        break
-    # p2 makes a move
-    p2_input = player_move()
+    draw_board() # print the current board
+    if if_win() or if_draw(): # check if p1 wins the game or if it's a tie
+        break # if the returned value is True, break the loop
+
+    p2_input = player_move() # p2 makes a move
     while not if_valid_move(p2_input):
         p2_input = player_move()
     board_lst[p2_input] = p2_symbol
-    draw_board()
-    # after p2 made the move, check if p2 wins the game
-    # if the returned value is True, break the loop
-    if if_win() or if_draw():
-        break
+    draw_board()  # print the current board
+    if if_win() or if_draw(): # check if p2 wins the game or if it's a tie
+        break # if the returned value is True, break the loop
