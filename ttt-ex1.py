@@ -87,4 +87,4 @@ while turn < 9:
     if if_win(board_lst) or if_draw(board_lst): # check win/tie
         break # if yes, end the game
 
-    turn +=1
+    turn += 1
