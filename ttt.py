@@ -37,7 +37,7 @@ p2_symbol = "X"
 # a loop that iterate through the list:
     # print the board
     # p1 makes a move
-    # verify if p1's move is valid
+    # validate if p1's move is valid
     # before p1 make a valid move, keep prompting p1 for input
     # mark the cell that is picked by p1
     # print the board
@@ -46,7 +46,7 @@ p2_symbol = "X"
 
     # print the board
     # p2 makes a move
-    # verify if p2's move is valid
+    # validate if p2's move is valid
     # before p2 make a valid move, keep prompting p2 for input
     # mark the cell that is picked by p2
     # print the board
